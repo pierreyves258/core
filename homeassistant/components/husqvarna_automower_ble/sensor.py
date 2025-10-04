@@ -23,6 +23,13 @@ DESCRIPTIONS = (
         entity_category=EntityCategory.DIAGNOSTIC,
         native_unit_of_measurement=PERCENTAGE,
     ),
+    SensorEntityDescription(
+        key="cutting_height",
+        state_class=SensorStateClass.MEASUREMENT,
+        device_class=None,
+        entity_category=EntityCategory.DIAGNOSTIC,
+        native_unit_of_measurement=None,
+    ),
 )
 
 

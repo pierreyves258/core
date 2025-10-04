@@ -87,6 +87,12 @@ class HusqvarnaCoordinator(DataUpdateCoordinator[dict[str, str | int]]):
                 await self._async_find_device()
                 raise UpdateFailed("Error getting data from device")
 
+            data["cutting_height"] = await self.mower.command("GetCuttingHeight")
+            LOGGER.debug("cutting_height" + str(data["cutting_height"]))
+            if data["cutting_height"] is None:
+                await self._async_find_device()
+                raise UpdateFailed("Error getting data from device")
+
             data["activity"] = await self.mower.mower_activity()
             LOGGER.debug("activity:" + str(data["activity"]))
             if data["activity"] is None:
